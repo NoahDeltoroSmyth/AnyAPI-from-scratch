@@ -18,4 +18,15 @@ describe('AnyAPI-from-scratch routes', () => {
     const res = await request(app).get('/api/v1/movies');
     expect(res.body).toEqual(expected);
   });
+
+  it('creates a movie', async () => {
+    const expected = {
+      title: 'Step Brothers',
+      genre: 'comedy',
+      duration: '98',
+      releaseDate: '2008',
+    };
+    const res = await request(app).post('/api/v1/movies').send(expected);
+    expect(res.body).toEqual({ id: expect.any(Number), ...expected });
+  });
 });

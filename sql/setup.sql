@@ -11,7 +11,7 @@ CREATE TABLE movies (
     release_date INT NOT NULL
 );
 
-INSERT INTO
-movies (title, genre, duration, release_date);
-VALUES
-    ('The Pick of Destiny', 'comedy', 94, 2006),
+-- INSERT INTO
+-- movies (title, genre, duration, release_date);
+-- VALUES
+--     ('The Pick of Destiny', 'comedy', 94, 2006),
