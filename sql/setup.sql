@@ -5,9 +5,9 @@ DROP TABLE IF EXISTS movies;
 
 CREATE TABLE movies (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    title TEXT NOT NULL
-    genre TEXT NOT NULL
-    duration INT NOT NULL
+    title TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    duration INT NOT NULL,
     release_date INT NOT NULL
 );
 
