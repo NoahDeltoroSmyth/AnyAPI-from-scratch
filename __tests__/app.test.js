@@ -29,4 +29,10 @@ describe('AnyAPI-from-scratch routes', () => {
     const res = await request(app).post('/api/v1/movies').send(expected);
     expect(res.body).toEqual({ id: expect.any(Number), ...expected });
   });
+
+  it('it gets a movie by id', async () => {
+    const expected = await Movie.findById(4);
+    const res = await request(app).get('/api/v1/movies/4');
+    expect(res.body).toEqual({ ...expected });
+  });
 });
