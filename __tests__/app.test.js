@@ -30,9 +30,25 @@ describe('AnyAPI-from-scratch routes', () => {
     expect(res.body).toEqual({ id: expect.any(Number), ...expected });
   });
 
-  it('it gets a movie by id', async () => {
-    const expected = await Movie.findById(4);
-    const res = await request(app).get('/api/v1/movies/4');
-    expect(res.body).toEqual({ ...expected });
+  it('gets a movie by id', async () => {
+    const movie = await Movie.insert({
+      title: 'Step Brothers',
+      genre: 'comedy',
+      duration: '98',
+      releaseDate: '2008',
+    });
+    const res = await request(app).get(`/api/v1/movies/${movie.id}`);
+    expect(res.body).toEqual(movie);
+  });
+
+  it('deletes a movie by id', async () => {
+    const movie = await Movie.insert({
+      title: 'Step Brothers',
+      genre: 'comedy',
+      duration: '98',
+      releaseDate: '2008',
+    });
+    const res = await request(app).delete(`/api/v1/movies/${movie.id}`);
+    expect(res.body).toEqual(movie);
   });
 });
